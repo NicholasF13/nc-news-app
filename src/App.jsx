@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import Header from './Components/Header'
 import Nav from './Components/Nav'
 import Home from './Components/Home'
+import ArticleList from './Components/Articles/ArticleList'
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
     <Nav/>
     <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/articles" element={<Articles/>} />
+        <Route path="/articles" element={<ArticleList/>} />
     </Routes>
    </main>
   )
