@@ -1,10 +1,10 @@
 import './App.css'
-import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Header from './Components/Header'
 import Nav from './Components/Nav'
 import Home from './Components/Home'
 import ArticleList from './Components/Articles/ArticleList'
+import SingleArticle from './Components/Articles/SingleArticle'
 
 function App() {
 
@@ -15,6 +15,7 @@ function App() {
     <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/articles" element={<ArticleList/>} />
+        <Route path="/articles/:article_id" element={<SingleArticle/>} />
     </Routes>
    </main>
   )
