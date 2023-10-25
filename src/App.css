@@ -63,16 +63,12 @@
       'author-title author-title'
       'article-img-container article-img-container'
       'comments-votes date';
-    max-width: 30%;
+    max-width: auto;
+    min-width: 340px;
+    flex: 1;
     color:black;
     }
 
-    @media (max-width: 1000px) {
-      .article-card {
-        max-width: 100%; 
-      }
-    }
-  
   .author-title {
     grid-area: author-title;
     padding: 20px; 
@@ -127,19 +123,19 @@
     list-style: none;
     display: flex;
     flex-wrap:wrap;
-    justify-content: center;
     gap: 30px;
   }
 
   .article-details-container {
     display: grid;
     grid-template-columns: 1fr 1fr; 
-    grid-template-rows: auto auto auto 1fr; 
+    grid-template-rows: auto auto auto 1fr auto; 
     grid-template-areas:
       "header header"
       "author-date author-date"
       "image image"
-      "content content";
+      "content content"
+      "votes-comments votes-comments";
     background-color: #fff;
     border: 1px solid #e1e1e1;
     border-radius: 5px;
@@ -193,3 +189,54 @@
     color: #333;
     line-height: 1.5;
   }
+
+ 
+.single-votes-comments {
+  grid-area: votes-comments;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-votes-comments p {
+  margin-right: 50px;
+}
+
+.single-votes-comments button {
+  margin-left: 50px;
+  height:25px;
+}
+
+
+
+.comments-list {
+  list-style: none;
+  padding: 0;
+}
+
+.comment-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.username-date {
+  display: flex;
+  align-items: center;
+}
+
+.username-date strong {
+  color: rgb(51, 0, 255);
+  margin-right: 8px;
+}
+
+.username-date p {
+  color: #606060;
+}
+
+.comments-header {
+  text-align: center;
+}
