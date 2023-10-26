@@ -18,16 +18,14 @@ export default function AddComment({ article_id, handleCommentPosted }) {
       return;
     }
 
-    if (newCommentBody.trim() === "") {
-      setError("Please enter a comment.");
-    }
-
     if (!user) {
       setError("Please log in to post a comment.");
+      return
     }
 
     if (newCommentBody.trim() === "") {
       setError("Please enter a comment.");
+      return
     }
 
     setIsLoading(true)
@@ -51,6 +49,7 @@ export default function AddComment({ article_id, handleCommentPosted }) {
 
   return (
     <form className="add-comment" onSubmit={handleSubmit}>
+      <label htmlFor="comment"></label>
       <textarea
         name="comment"
         rows="4"

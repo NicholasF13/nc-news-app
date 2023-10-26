@@ -29,11 +29,11 @@ export default function CommentList({article_id, showComments, setLoadingComment
  
   if (!showComments) return null
 
-
+console.log(comments)
   return (
     <div>
     <h2 className="comments-header">Comments:</h2>
-    <AddComment className='add-comment' article_id={article_id} handleCommentPosted={handleCommentPosted} />
+    <AddComment article_id={article_id} handleCommentPosted={handleCommentPosted} />
     <ul className="comments-list">
       {comments.map((comment) => (
         <CommentCard key={comment.comment_id} comment={comment} />
