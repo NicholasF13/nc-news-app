@@ -35,3 +35,7 @@ export function fetchUsers() {
 export function patchArticleVotes(article_id, data){
     return newsApi.patch(`/articles/${article_id}`, data)
 }
+
+export function postComment(article_id, newComment) {
+    return newsApi.post(`/articles/${article_id}/comments`, newComment)
+}
