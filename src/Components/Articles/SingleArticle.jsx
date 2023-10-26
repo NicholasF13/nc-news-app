@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../../apis";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import CommentList from "../Comments/CommentList";
+import ArticleVotes from "./ArticleVotes";
 
 export default function SingleArticle(){
     const {article_id} = useParams()
@@ -9,6 +10,7 @@ export default function SingleArticle(){
     const [article, setArticle] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [showComments, setShowComments] = useState(false)
+    const [loadingComments, setLoadingComments] = useState(false);
 
     useEffect(() => {
         getArticleById(article_id)
@@ -18,10 +20,15 @@ export default function SingleArticle(){
         }).catch((err) => {
             console.log(err)
         })
-    }, [article_id])
+    }, [article, article_id])
+
 
     function toggleComments () {
         setShowComments(!showComments)
+
+        if (!showComments) {
+          setLoadingComments(true)
+        }
     }
 
     if (isLoading) return <p>...Loading</p>
@@ -54,11 +61,12 @@ export default function SingleArticle(){
           <p>{body}</p>
         </article>
         <div className="single-votes-comments">
-        <p>Votes:{votes}</p>
-        <button onClick={toggleComments}>Comments: {comment_count}</button>
+        <ArticleVotes article_id={article_id} votes={votes} /> 
+        <button className="comments-button" onClick={toggleComments}>Comments: {comment_count}</button>
+        {loadingComments ? 'Loading Comments...' : ``}
         </div>
       </main>
-      <CommentList article_id={article_id} showComments={showComments}/>
+      <CommentList setLoadingComments= {setLoadingComments} article_id={article_id} showComments={showComments}/>
       </>
     )
 }

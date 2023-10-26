@@ -5,10 +5,12 @@ import Nav from './Components/Nav'
 import Home from './Components/Home'
 import ArticleList from './Components/Articles/ArticleList'
 import SingleArticle from './Components/Articles/SingleArticle'
+import { UserProvider } from './Components/Users/UserContext'
 
 function App() {
 
   return (
+    <UserProvider>
    <main>
     <Header/>
     <Nav/>
@@ -18,6 +20,7 @@ function App() {
         <Route path="/articles/:article_id" element={<SingleArticle/>} />
     </Routes>
    </main>
+   </UserProvider>
   )
 }
 

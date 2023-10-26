@@ -24,3 +24,14 @@ export function getCommentsByArticleId(article_id){
         return res.data
     })
 }
+
+export function fetchUsers() {
+    return newsApi.get('/users')
+    .then((res) => {
+        return res.data
+    })
+}
+
+export function patchArticleVotes(article_id, data){
+    return newsApi.patch(`/articles/${article_id}`, data)
+}
