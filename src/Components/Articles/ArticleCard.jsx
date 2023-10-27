@@ -9,7 +9,7 @@ export default function ArticleCard({article}){
     const formattedDate = date.toLocaleDateString('en-US', options);
 
     return (
-        <Link to={`/articles/${article.article_id}`} className="article-card">
+        <Link to={`/article/${article.article_id}`} className="article-card">
         <div className="author-title">
           <strong>{article.title}</strong>
           <p>Author: {article.author}</p>

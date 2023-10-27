@@ -93,7 +93,7 @@
       'author-title author-title'
       'article-img-container article-img-container'
       'comments-votes date';
-    max-width: auto;
+    max-width: 30%;
     min-width: 340px;
     flex: 1;
     color:black;
@@ -154,6 +154,7 @@
     display: flex;
     flex-wrap:wrap;
     gap: 30px;
+    justify-content:
   }
 
   .article-details-container {

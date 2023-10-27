@@ -29,7 +29,6 @@ export default function CommentList({article_id, showComments, setLoadingComment
  
   if (!showComments) return null
 
-console.log(comments)
   return (
     <div>
     <h2 className="comments-header">Comments:</h2>
