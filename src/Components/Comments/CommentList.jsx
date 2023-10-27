@@ -9,14 +9,28 @@ import { useUser } from '../Users/UserContext'
 export default function CommentList({article_id, showComments, setLoadingComments}) {
 
     const [comments, setComments] = useState([])
+    const [deleteMessage, setDeleteMessage] = useState(null)
     const { user } = useUser()
 
+
     const handleCommentPosted = (newComment) => {
-      setComments((currentComments) => [newComment, ...currentComments]);
+      setComments((currentComments) => [newComment, ...currentComments])
     }
   
     const handleCommentDelete = (comment_id) => {
       deleteCommentById(comment_id)
+      .then(() => {
+        setDeleteMessage('Comment deleted successfully')
+        setTimeout(() => {
+          setDeleteMessage(null)
+        }, 3000)
+      })
+      .catch((err) => {
+        setDeleteMessage('Error deleting comment. Please try again')
+        setTimeout(() => {
+          setDeleteMessage(null)
+        }, 3000)
+      })
     }
 
   useEffect(() => {
@@ -38,6 +52,7 @@ export default function CommentList({article_id, showComments, setLoadingComment
     <div>
     <h2 className="comments-header">Comments:</h2>
     <AddComment article_id={article_id} handleCommentPosted={handleCommentPosted} />
+    {deleteMessage && <p>{deleteMessage}</p>}
     <ul className="comments-list">
       {comments.map((comment) => (
         <CommentCard key={comment.comment_id}

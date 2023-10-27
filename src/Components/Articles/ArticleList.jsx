@@ -12,6 +12,7 @@ export default function ArticleList() {
     const [articleList, setArticleList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [searchParams, setSearchParams] = useSearchParams()
+    const [error, setError] = useState(null)
 
     const sortBy = searchParams.get("sort") || "created_at";
     const sortOrder = searchParams.get("order") || "desc";
@@ -32,8 +33,15 @@ export default function ArticleList() {
             setArticleList(articles)
             setIsLoading(false)
         })
+        .catch((err) => {
+            console.log(err)
+            setError("Topic not found")
+        })
     }, [topic, sortBy, sortOrder])
 
+    if (error){
+      return <p>{error}</p>
+    }
     if (isLoading) return <p>Loading...</p>
 
     return (
