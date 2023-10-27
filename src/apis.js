@@ -67,3 +67,7 @@ export function fetchTopics(){
         return res.data
     })
 }
+
+export function deleteCommentById(comment_id){
+  return newsApi.delete(`/comments/${comment_id}`)
+}
