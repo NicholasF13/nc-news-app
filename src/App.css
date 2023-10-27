@@ -93,7 +93,7 @@
       'author-title author-title'
       'article-img-container article-img-container'
       'comments-votes date';
-    max-width: 25%;
+    max-width: 23%;
     min-width: 340px;
     flex: 1;
     color:black;
@@ -150,6 +150,7 @@
   }
   
   .article-list {
+    justify-content: left;
     list-style: none;
     display: flex;
     flex-wrap:wrap;
@@ -222,6 +223,7 @@
 
  
 .single-votes-comments {
+  max-width: 100%;
   grid-area: votes-comments;
   display: flex;
   justify-content: space-around;
@@ -354,6 +356,7 @@
 }
 
 .articles-nav-bar a {
+  max-width: 100%;
   text-decoration: none;
   color: #fff;
   padding: 10px 20px;
@@ -367,6 +370,7 @@
 }
 
 .sort-dropdown {
+  max-width: 100%;
   margin-top: 10px;
   display: flex;
   flex-direction: row;
