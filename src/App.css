@@ -93,7 +93,7 @@
       'author-title author-title'
       'article-img-container article-img-container'
       'comments-votes date';
-    max-width: 30%;
+    max-width: 25%;
     min-width: 340px;
     flex: 1;
     color:black;
