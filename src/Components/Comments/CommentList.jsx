@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { getCommentsByArticleId } from "../../apis";
+import { deleteCommentById, getCommentsByArticleId } from "../../apis";
 import CommentCard from "./CommentCard";
 import AddComment from "./AddComment"
+import { useUser } from '../Users/UserContext'
 
 
 
 export default function CommentList({article_id, showComments, setLoadingComments}) {
 
     const [comments, setComments] = useState([])
+    const { user } = useUser()
 
     const handleCommentPosted = (newComment) => {
       setComments((currentComments) => [newComment, ...currentComments]);
     }
   
+    const handleCommentDelete = (comment_id) => {
+      deleteCommentById(comment_id)
+    }
 
   useEffect(() => {
    if(showComments){
@@ -35,7 +40,12 @@ export default function CommentList({article_id, showComments, setLoadingComment
     <AddComment article_id={article_id} handleCommentPosted={handleCommentPosted} />
     <ul className="comments-list">
       {comments.map((comment) => (
-        <CommentCard key={comment.comment_id} comment={comment} />
+        <CommentCard key={comment.comment_id}
+                     comment={comment}
+                     user={user}
+                     handleCommentDelete={handleCommentDelete}
+                    />
+                    
       ))}
     </ul>
   </div>

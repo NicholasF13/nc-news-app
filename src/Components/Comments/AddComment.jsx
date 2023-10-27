@@ -51,7 +51,7 @@ export default function AddComment({ article_id, handleCommentPosted }) {
     <form className="add-comment" onSubmit={handleSubmit}>
       <label htmlFor="comment"></label>
       <textarea
-        name="comment"
+        id="comment"
         rows="4"
         placeholder="What are your thoughts"
         value={newCommentBody}
