@@ -6,6 +6,8 @@ import Home from './Components/Home'
 import ArticleList from './Components/Articles/ArticleList'
 import SingleArticle from './Components/Articles/SingleArticle'
 import { UserProvider } from './Components/Users/UserContext'
+import NotFoundPage from './Components/NotFoundPage'
+
 
 function App() {
 
@@ -19,6 +21,7 @@ function App() {
         <Route path="/articles/:topic" element={<ArticleList/>} />
         <Route path="/articles" element={<ArticleList/>} />
         <Route path="/article/:article_id" element={<SingleArticle/>} />
+        <Route path="*" element={<NotFoundPage />} />
     </Routes>
    </main>
    </UserProvider>

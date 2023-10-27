@@ -10,7 +10,8 @@ export default function SingleArticle(){
     const [article, setArticle] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [showComments, setShowComments] = useState(false)
-    const [loadingComments, setLoadingComments] = useState(false);
+    const [loadingComments, setLoadingComments] = useState(false)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         getArticleById(article_id)
@@ -19,6 +20,7 @@ export default function SingleArticle(){
             setIsLoading(false)
         }).catch((err) => {
             console.log(err)
+            setError("Article not found")
         })
     }, [article, article_id])
 
@@ -30,6 +32,11 @@ export default function SingleArticle(){
           setLoadingComments(true)
         }
     }
+
+    if (error) {
+      return <p>{error}</p>
+    }
+  
 
     if (isLoading) return <p>...Loading</p>
 
