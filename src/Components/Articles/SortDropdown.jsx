@@ -8,7 +8,7 @@ export default function SortDropdown({ sortBy, sortOrder, onSortChange, onOrderC
     }
   
     return (
-      <div>
+      <div className="sort-dropdown">
         <label htmlFor="sort-dropdown">Sort By:</label>
         <select id="sort-dropdown" value={sortBy} onChange={handleSortChange}>
           <option value="created_at">Date</option>

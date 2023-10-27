@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { patchArticleVotes } from "../../apis";
 import { useUser } from '../../Components/Users/UserContext'
-import { FaArrowUp, FaArrowDown, Fa500Px } from "react-icons/fa";
+import { FaArrowUp, FaArrowDown} from "react-icons/fa";
 
-export default function ArticleVotes ({article_id, votes}) {
+export default function ArticleVotes ({article_id, votes, setVoteCount}) {
     const {user} = useUser()
     const [hasUpvoted, setHasUpvoted] = useState(false)
     const [hasDownvoted, setHasDownvoted] = useState(false)
@@ -14,6 +14,7 @@ export default function ArticleVotes ({article_id, votes}) {
       if (user && !hasUpvoted) {
         patchArticleVotes(article_id, { inc_votes: 1 }).then(() => {
           setHasUpvoted(true)
+          setVoteCount((prevCount) => prevCount + 1)
         })
       }
     }
@@ -21,6 +22,7 @@ export default function ArticleVotes ({article_id, votes}) {
     const handleDownvote = () => {
       if ( user && !hasDownvoted) {
         patchArticleVotes(article_id, { inc_votes: -1 }).then(() => {
+          setVoteCount((prevCount) => prevCount + 1)    
           setHasDownvoted(true)
         })
       }

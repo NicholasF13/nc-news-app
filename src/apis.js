@@ -22,7 +22,6 @@ export function fetchArticles(topic, sort, order){
   if (queryParams.length > 0) {
     url += `?${queryParams.join("&")}`
   }
-  console.log(url)
 
   return newsApi.get(url)
     .then((res) => {

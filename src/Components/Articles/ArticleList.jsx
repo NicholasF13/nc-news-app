@@ -47,13 +47,15 @@ export default function ArticleList() {
     return (
         <div>
             <h1 className="articles-header">Articles</h1>
+            <div className="nav-bar-and-dropdown-container">
+            <ArticlesNavBar/>
             <SortDropdown
               sortBy={sortBy}
               sortOrder={sortOrder}
               onSortChange={handleSortChange}
               onOrderChange={handleOrderChange}
             />
-            <ArticlesNavBar/>
+            </div>
             <ul className="article-list">
                 {articleList.map((article) => {
                     return <ArticleCard key={article.article_id} article={article}/>

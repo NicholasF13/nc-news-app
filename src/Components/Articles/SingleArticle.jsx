@@ -6,12 +6,14 @@ import ArticleVotes from "./ArticleVotes";
 
 export default function SingleArticle(){
     const {article_id} = useParams()
-    
     const [article, setArticle] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [showComments, setShowComments] = useState(false)
     const [loadingComments, setLoadingComments] = useState(false)
     const [error, setError] = useState(null)
+    const [voteCount, setVoteCount] = useState(0)
+    const [commentCount, setCommentCount] = useState(0); 
+
 
     useEffect(() => {
         getArticleById(article_id)
@@ -19,10 +21,9 @@ export default function SingleArticle(){
             setArticle(article)
             setIsLoading(false)
         }).catch((err) => {
-            console.log(err)
             setError("Article not found")
         })
-    }, [article, article_id])
+    }, [voteCount, article_id, commentCount])
 
 
     function toggleComments () {
@@ -41,6 +42,7 @@ export default function SingleArticle(){
     if (isLoading) return <p>...Loading</p>
 
     const {title, author, body, article_img_url, votes, created_at, comment_count} = article.article
+    
 
     const date = new Date(created_at)
     const options = {
@@ -68,12 +70,17 @@ export default function SingleArticle(){
           <p>{body}</p>
         </article>
         <div className="single-votes-comments">
-        <ArticleVotes article_id={article_id} votes={votes} /> 
+        <ArticleVotes article_id={article_id} votes={votes} setVoteCount={setVoteCount} /> 
         <button className="comments-button" onClick={toggleComments}>Comments: {comment_count}</button>
         {loadingComments ? 'Loading Comments...' : ``}
         </div>
       </main>
-      <CommentList setLoadingComments= {setLoadingComments} article_id={article_id} showComments={showComments}/>
+      <CommentList setLoadingComments= {setLoadingComments} 
+                    article_id={article_id}
+                   showComments={showComments}
+                   commentCount={commentCount}
+                   setCommentCount={setCommentCount}
+                   />      
       </>
     )
 }

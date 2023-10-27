@@ -154,7 +154,6 @@
     display: flex;
     flex-wrap:wrap;
     gap: 30px;
-    justify-content:
   }
 
   .article-details-container {
@@ -244,13 +243,8 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
-  text-transform: uppercase; /* Uppercase text */
-
-  /* Hover effect */
-  &:hover {
-    background-color: #0056b3;
-  }
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  text-transform: uppercase; 
 }
 
 
@@ -349,4 +343,45 @@
 
 .add-comment button:hover {
   background-color: #0056b3;
+}
+
+.articles-nav-bar {
+  background-color: #333;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.articles-nav-bar a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-bottom: 3px solid transparent;
+  transition: border-bottom 0.3s ease; 
+}
+
+.articles-nav-bar a:hover {
+  border-bottom: 3px solid #007bff; 
+}
+
+.sort-dropdown {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sort-dropdown label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.sort-dropdown select {
+  padding: 5px;
+  border: 1px solid #ccc; 
+  border-radius: 4px;
+  font-size: 16px;
 }

@@ -6,7 +6,7 @@ import { useUser } from '../Users/UserContext'
 
 
 
-export default function CommentList({article_id, showComments, setLoadingComments}) {
+export default function CommentList({article_id, showComments, setLoadingComments, commentCount, setCommentCount}) {
 
     const [comments, setComments] = useState([])
     const [deleteMessage, setDeleteMessage] = useState(null)
@@ -15,6 +15,7 @@ export default function CommentList({article_id, showComments, setLoadingComment
 
     const handleCommentPosted = (newComment) => {
       setComments((currentComments) => [newComment, ...currentComments])
+      setCommentCount((prevCount) => prevCount + 1)
     }
   
     const handleCommentDelete = (comment_id) => {
@@ -23,6 +24,7 @@ export default function CommentList({article_id, showComments, setLoadingComment
         setDeleteMessage('Comment deleted successfully')
         setTimeout(() => {
           setDeleteMessage(null)
+          setCommentCount((prevCount) => prevCount - 1)
         }, 3000)
       })
       .catch((err) => {
@@ -44,7 +46,7 @@ export default function CommentList({article_id, showComments, setLoadingComment
         console.log(err)
       })
    }
-  }, [article_id, showComments, comments])
+  }, [article_id, showComments, commentCount])
  
   if (!showComments) return null
 
